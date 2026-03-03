@@ -190,6 +190,7 @@ footer {
 <nav>
     <a href="#why">Why</a>
     <a href="#products">Products</a>
+    <a href="#where-to-buy">Where to Buy</a>
     <a href="#donation">Progress</a>
     <span class="toggle-btn" onclick="toggleDark()">🌙</span>
 </nav>
@@ -202,16 +203,12 @@ footer {
 <!-- WHY NEPAL -->
 <section id="why" class="fade">
     <h2>Why Nepal?</h2>
-
     <div style="max-width: 900px; margin: auto; text-align: center;">
-
-        <!-- Intro Paragraph -->
         <p style="font-size: 1.2rem; margin-bottom: 40px;">
             Nepal is home to amazing communities and culture, but many children don’t have access to proper schools or learning resources.
             Our mission is to provide educational opportunities that empower students and build brighter futures.
         </p>
 
-        <!-- Info Cards -->
         <div class="grid" style="margin-top:40px;">
             <div class="card">
                 <h3>📚 School Construction</h3>
@@ -219,14 +216,12 @@ footer {
                     Many villages lack proper classrooms. Your support helps build safe, modern schools where children can learn effectively.
                 </p>
             </div>
-
             <div class="card">
                 <h3>🎓 Scholarships & Education Support</h3>
                 <p>
                     We provide scholarships and resources to students who otherwise wouldn’t have access to education, helping them reach their full potential.
                 </p>
             </div>
-
             <div class="card">
                 <h3>🌱 Long-Term Impact</h3>
                 <p>
@@ -234,8 +229,6 @@ footer {
                 </p>
             </div>
         </div>
-
-
     </div>
 </section>
 
@@ -258,6 +251,16 @@ footer {
             <p>Fidget Toy 3</p>
             <div class="price">£20</div>
         </div>
+    </div>
+</section>
+
+<!-- WHERE TO BUY -->
+<section id="where-to-buy" class="fade">
+    <h2>Where to Buy</h2>
+    <div style="text-align: center; max-width: 800px; margin: auto; font-size: 1.2rem; line-height: 1.6;">
+        <p>
+            You can purchase these products in person at the International Fair. Dates are to be determined, so stay tuned for updates or contact us directly for more information.
+        </p>
     </div>
 </section>
 
@@ -300,23 +303,6 @@ window.addEventListener("load", () => {
         document.getElementById("count").innerText = count;
         if (count >= target) clearInterval(interval);
     }, 20);
-
-    // Animate impact counters
-    const counters = document.querySelectorAll(".counter[data-target]");
-    counters.forEach(counter => {
-        const updateCount = () => {
-            const target = +counter.getAttribute("data-target");
-            const current = +counter.innerText;
-            const increment = target / 100;
-            if(current < target) {
-                counter.innerText = Math.ceil(current + increment);
-                setTimeout(updateCount, 20);
-            } else {
-                counter.innerText = target;
-            }
-        };
-        updateCount();
-    });
 });
 
 // FADE IN SECTIONS
