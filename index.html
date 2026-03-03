@@ -5,134 +5,173 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Charity Project Nepal</title>
 
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+    --primary: #c8102e; /* Nepal red */
+    --dark: #0f0f0f;
+    --light: #ffffff;
+    --gray: #f5f5f7;
 }
 
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f8f9fa;
-    color: #222;
-    line-height: 1.6;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--gray);
+    color: #111;
+    transition: background 0.4s ease, color 0.4s ease;
+    scroll-behavior: smooth;
+}
+
+/* DARK MODE */
+body.dark {
+    background: var(--dark);
+    color: white;
+}
+
+body.dark .card {
+    background: #1a1a1a;
+}
+
+body.dark nav {
+    background: rgba(20,20,20,0.7);
+}
+
+/* NAVIGATION */
+nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(12px);
+    padding: 10px 25px;
+    border-radius: 50px;
+    display: flex;
+    gap: 20px;
+    z-index: 1000;
+    transition: 0.3s ease;
+}
+
+nav a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 500;
+}
+
+.toggle-btn {
+    cursor: pointer;
+    font-weight: 600;
 }
 
 /* HERO */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
     url('https://images.unsplash.com/photo-1544735716-392fe2489ffa');
     background-size: cover;
     background-position: center;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     text-align: center;
     color: white;
-    padding: 20px;
+    position: relative;
+    overflow: hidden;
 }
 
 .hero h1 {
     font-size: 3.5rem;
-    font-weight: 600;
-    letter-spacing: 1px;
+    font-weight: 700;
+    letter-spacing: -1px;
 }
 
-/* GENERAL SECTION STYLING */
+/* HERO FADE EFFECT */
+.hero.fade-out {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.8s ease;
+}
+
+/* SECTIONS */
 section {
-    padding: 100px 20px;
+    padding: 120px 20px;
     max-width: 1100px;
     margin: auto;
 }
 
-/* HEADINGS */
 h2 {
     text-align: center;
+    font-size: 2.4rem;
     margin-bottom: 50px;
-    font-size: 2.2rem;
+    letter-spacing: -1px;
 }
 
-/* WHY NEPAL */
-.why p {
-    max-width: 700px;
-    margin: auto;
-    font-size: 1.1rem;
-    color: #555;
-    text-align: center;
-}
-
-/* PRODUCTS */
-.product-grid {
+/* CARDS */
+.grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 40px;
 }
 
-.product {
+.card {
     background: white;
-    padding: 25px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    transition: 0.4s ease;
 }
 
-.product:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+.card:hover {
+    transform: translateY(-10px);
 }
 
-.product img {
+.card img {
     width: 100%;
-    height: 220px;
+    border-radius: 15px;
+    height: 200px;
     object-fit: cover;
-    border-radius: 12px;
-}
-
-.product p {
-    margin-top: 15px;
-    font-weight: 500;
 }
 
 .price {
-    margin-top: 8px;
-    font-weight: bold;
-    color: #1b5e20;
+    margin-top: 10px;
+    font-weight: 600;
+    color: var(--primary);
 }
 
-/* DONATION PROGRESS */
+/* PROGRESS BAR */
 .progress-container {
-    background: #e0e0e0;
-    border-radius: 50px;
+    background: #ddd;
+    height: 25px;
+    border-radius: 30px;
     overflow: hidden;
-    margin-top: 30px;
 }
 
 .progress-bar {
-    height: 25px;
+    height: 100%;
     width: 0%;
-    background: linear-gradient(90deg, #43a047, #2e7d32);
-    border-radius: 50px;
+    background: var(--primary);
     transition: width 2s ease;
 }
 
-.progress-text {
+.counter {
     text-align: center;
-    margin-top: 15px;
-    font-weight: 500;
+    margin-top: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
 }
 
 /* FOOTER */
 footer {
+    text-align: center;
+    padding: 60px 20px;
     background: #111;
     color: #aaa;
-    text-align: center;
-    padding: 40px 20px;
-    font-size: 0.9rem;
 }
 
-/* FADE ANIMATION */
+/* FADE IN */
 .fade {
     opacity: 0;
     transform: translateY(40px);
@@ -145,85 +184,87 @@ footer {
 }
 </style>
 </head>
-
 <body>
 
-<!-- HERO -->
-<div class="hero">
+<nav>
+    <a href="#why">Why</a>
+    <a href="#products">Products</a>
+    <a href="#donation">Progress</a>
+    <span class="toggle-btn" onclick="toggleDark()">🌙</span>
+</nav>
+
+<div class="hero" id="hero">
     <h1>Charity Project Nepal 🇳🇵</h1>
 </div>
 
-<!-- WHY NEPAL -->
-<section class="why fade">
+<section id="why" class="fade">
     <h2>Why Nepal?</h2>
-    <p>
-        Nepal is home to beautiful culture, mountains, and strong communities.
-        However, many families still lack access to education and essential
-        resources. Every product purchased helps support local communities
-        and create better opportunities for children.
+    <p style="text-align:center; max-width:700px; margin:auto;">
+        Supporting education and essential resources for communities in Nepal.
+        Every purchase directly contributes to meaningful change.
     </p>
 </section>
 
-<!-- PRODUCTS -->
-<section class="products fade">
+<section id="products" class="fade">
     <h2>Support Our Cause</h2>
-
-    <div class="product-grid">
-
-        <div class="product">
-            <img src="https://via.placeholder.com/400x300" alt="">
+    <div class="grid">
+        <div class="card">
+            <img src="https://via.placeholder.com/400x300">
             <p>Handmade Bracelet</p>
             <div class="price">$10</div>
         </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/400x300" alt="">
+        <div class="card">
+            <img src="https://via.placeholder.com/400x300">
             <p>Art Print</p>
             <div class="price">$15</div>
         </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/400x300" alt="">
-            <p>Custom T-Shirt</p>
+        <div class="card">
+            <img src="https://via.placeholder.com/400x300">
+            <p>T-Shirt</p>
             <div class="price">$20</div>
         </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/400x300" alt="">
-            <p>Sticker Pack</p>
-            <div class="price">$5</div>
-        </div>
-
     </div>
 </section>
 
-<!-- DONATION PROGRESS -->
-<section class="donation fade">
+<section id="donation" class="fade">
     <h2>Fundraising Progress</h2>
-
     <div class="progress-container">
         <div class="progress-bar" id="progress"></div>
     </div>
-
-    <div class="progress-text">
-        $750 raised of $1000 goal
+    <div class="counter">
+        $<span id="count">0</span> raised of $1000 goal
     </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-    © 2026 Charity Project Nepal | Made with ❤️ for a better future
+    © 2026 Charity Project Nepal | Designed with ❤️
 </footer>
 
 <script>
-// Animate progress bar on load
-window.addEventListener("load", function() {
-    document.getElementById("progress").style.width = "75%";
+// HERO FADE OUT ON SCROLL
+window.addEventListener("scroll", () => {
+    const hero = document.getElementById("hero");
+    if (window.scrollY > 200) {
+        hero.classList.add("fade-out");
+    } else {
+        hero.classList.remove("fade-out");
+    }
 });
 
-// Fade-in animation on scroll
-const faders = document.querySelectorAll(".fade");
+// PROGRESS BAR + COUNTER
+window.addEventListener("load", () => {
+    document.getElementById("progress").style.width = "75%";
 
+    let count = 0;
+    const target = 750;
+    const interval = setInterval(() => {
+        count += 10;
+        document.getElementById("count").innerText = count;
+        if (count >= target) clearInterval(interval);
+    }, 20);
+});
+
+// FADE IN SECTIONS
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -232,9 +273,12 @@ const observer = new IntersectionObserver(entries => {
     });
 }, { threshold: 0.2 });
 
-faders.forEach(fade => {
-    observer.observe(fade);
-});
+document.querySelectorAll(".fade").forEach(el => observer.observe(el));
+
+// DARK MODE
+function toggleDark() {
+    document.body.classList.toggle("dark");
+}
 </script>
 
 </body>
